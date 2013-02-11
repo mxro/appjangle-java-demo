@@ -10,11 +10,19 @@ package com.appjangle.demos.appjanglejavademo;
  */
 public class ProvideWallUrlPanel extends javax.swing.JPanel {
 
+    MainWindow mw;
+    
+    public void setMainWindow(MainWindow mw) {
+        this.mw = mw;
+    }
+    
     /**
      * Creates new form ProvideWallUrlPanel
      */
     public ProvideWallUrlPanel() {
         initComponents();
+        
+        
     }
 
     /**
@@ -33,6 +41,11 @@ public class ProvideWallUrlPanel extends javax.swing.JPanel {
         jLabel1.setText("Please provide a wall URL:");
 
         jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -62,6 +75,11 @@ public class ProvideWallUrlPanel extends javax.swing.JPanel {
                 .addContainerGap(215, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.mw.display(new DisplayPostCountsPanel());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

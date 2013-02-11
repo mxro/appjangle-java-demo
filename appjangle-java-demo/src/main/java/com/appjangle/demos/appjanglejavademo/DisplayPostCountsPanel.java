@@ -4,6 +4,8 @@
  */
 package com.appjangle.demos.appjanglejavademo;
 
+import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.swing.table.AbstractTableModel;
@@ -20,24 +22,38 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel {
      */
     public DisplayPostCountsPanel() {
         initComponents();
+        
+        displayData(new HashMap<String, String>() {{
+            this.put("Caesar", "1");
+            this.put("Cleopetra", "5");
+            
+        }});
+        
+        displayData(new HashMap<String, String>() {{
+            this.put("Caesar", "3");
+            this.put("Cleopetra", "5");
+            this.put("Sokrates", "2");
+        }});
     }
 
     private void displayData(Map<String, String> data) {
        int currentRow =0;
         for (Entry<String, String> row : data.entrySet()) {
-           
-            
+
            renderRow((DefaultTableModel) postCountTable.getModel(), currentRow, row.getKey(), row.getValue());
                     
            currentRow++;
        }
+        
+        
     }
     
     private void renderRow(DefaultTableModel model, int row, String key, String value) {
-        if (model.getRowCount() -1 > row) {
+        System.out.println(model.getRowCount() +" "+ row);
+        if (model.getRowCount() > row) {
               String oldKey =  (String) model.getValueAt(row, 0);
               String oldValue = (String) model.getValueAt(row, 1);
-              
+              System.out.println(oldKey+" "+oldValue);
               if (oldKey.equals(key) && oldValue.equals(value)) {
                   return;
               }
@@ -47,7 +63,7 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel {
               return;
         }
         
-        model.addRow(new Object[] {key, value});
+        model.insertRow(row, new Object[] {key, value});
         
     }
     
@@ -65,12 +81,10 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         wallUrlLabel = new javax.swing.JLabel();
 
+        postCountTable.setAutoCreateRowSorter(true);
         postCountTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Avatar", "Posts"
@@ -93,7 +107,7 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(postCountTable);
 
-        jLabel1.setText("Posts per User:");
+        jLabel1.setText("Posts Counts");
 
         wallUrlLabel.setText("[wallurl]");
 

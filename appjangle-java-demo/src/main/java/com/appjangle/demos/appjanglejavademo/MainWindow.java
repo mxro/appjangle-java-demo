@@ -4,6 +4,8 @@
  */
 package com.appjangle.demos.appjanglejavademo;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author mroh004
@@ -15,8 +17,21 @@ public class MainWindow extends javax.swing.JFrame {
      */
     public MainWindow() {
         initComponents();
+        
+        ProvideWallUrlPanel provideWallUrl =new ProvideWallUrlPanel(); 
+        provideWallUrl.setMainWindow(this);
+        
+        display(provideWallUrl);
     }
 
+    public void display(JPanel panel) {
+        mainPanel.removeAll();
+        mainPanel.add(panel);
+        
+        this.repaint();
+        this.validate();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -26,6 +41,8 @@ public class MainWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainPanel = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Demo 09: Add Java");
 
@@ -33,11 +50,13 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -81,9 +100,13 @@ public class MainWindow extends javax.swing.JFrame {
 
             public void run() {
                 new MainWindow().setVisible(true);
+                
+                
+                
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel mainPanel;
     // End of variables declaration//GEN-END:variables
 }
