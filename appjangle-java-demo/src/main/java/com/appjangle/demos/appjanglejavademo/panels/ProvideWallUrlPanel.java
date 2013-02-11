@@ -50,7 +50,7 @@ public class ProvideWallUrlPanel extends javax.swing.JPanel implements AppPanel 
 
         jLabel1.setText("Please provide a wall URL:");
 
-        wallUrlTextField.setText("http://slicnet.com/seed1/seed1/4/6/7/9/h/sd");
+        wallUrlTextField.setText("http://slicnet.com/seed1/seed1/4/6/8/3/h/sd");
 
         submitButton.setText("Submit");
         submitButton.addActionListener(new java.awt.event.ActionListener() {

@@ -41,6 +41,7 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPan
     }
 
     public void init(final Node posts) {
+        this.wallUrlLabel.setText(posts.uri());
         updateData(posts);
 
         installMonitor(posts);
@@ -139,6 +140,7 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPan
         wallUrlLabel = new javax.swing.JLabel();
 
         postCountTable.setAutoCreateRowSorter(true);
+        postCountTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         postCountTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -164,6 +166,7 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPan
         });
         jScrollPane1.setViewportView(postCountTable);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Posts Counts");
 
         wallUrlLabel.setText("[wallurl]");

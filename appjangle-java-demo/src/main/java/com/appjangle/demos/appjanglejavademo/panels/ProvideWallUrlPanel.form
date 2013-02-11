@@ -55,7 +55,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="wallUrlTextField">
       <Properties>
-        <Property name="text" type="java.lang.String" value="http://slicnet.com/seed1/seed1/4/6/7/9/h/sd"/>
+        <Property name="text" type="java.lang.String" value="http://slicnet.com/seed1/seed1/4/6/8/3/h/sd"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="submitButton">
