@@ -89,7 +89,7 @@ public class ProvideWallUrlPanel extends javax.swing.JPanel implements AppPanel 
     }// </editor-fold>//GEN-END:initComponents
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-
+        this.mw.display(new LoadingPanel());
         String url = wallUrlTextField.getText();
 
         final Session session = Nextweb.createSession();

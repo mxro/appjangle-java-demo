@@ -11,15 +11,12 @@ import io.nextweb.Session;
 import io.nextweb.common.Interval;
 import io.nextweb.common.Monitor;
 import io.nextweb.common.MonitorContext;
-import io.nextweb.fn.Calculation;
 import io.nextweb.fn.Closure;
 import io.nextweb.jre.Nextweb;
-import io.nextweb.operations.callbacks.Callback;
 import io.nextweb.operations.callbacks.NodeListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
