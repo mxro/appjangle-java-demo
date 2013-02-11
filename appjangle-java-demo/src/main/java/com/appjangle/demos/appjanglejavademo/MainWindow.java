@@ -4,6 +4,8 @@
  */
 package com.appjangle.demos.appjanglejavademo;
 
+import com.appjangle.demos.appjanglejavademo.panels.AppPanel;
+import com.appjangle.demos.appjanglejavademo.panels.ProvideWallUrlPanel;
 import javax.swing.JPanel;
 
 /**
