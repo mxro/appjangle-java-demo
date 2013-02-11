@@ -49,11 +49,11 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel {
     }
     
     private void renderRow(DefaultTableModel model, int row, String key, String value) {
-        System.out.println(model.getRowCount() +" "+ row);
+       
         if (model.getRowCount() > row) {
               String oldKey =  (String) model.getValueAt(row, 0);
               String oldValue = (String) model.getValueAt(row, 1);
-              System.out.println(oldKey+" "+oldValue);
+             
               if (oldKey.equals(key) && oldValue.equals(value)) {
                   return;
               }
