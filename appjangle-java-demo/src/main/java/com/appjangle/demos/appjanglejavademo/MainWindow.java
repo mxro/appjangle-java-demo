@@ -19,14 +19,14 @@ public class MainWindow extends javax.swing.JFrame {
         initComponents();
         
         ProvideWallUrlPanel provideWallUrl =new ProvideWallUrlPanel(); 
-        provideWallUrl.setMainWindow(this);
         
         display(provideWallUrl);
     }
 
-    public void display(JPanel panel) {
+    public final void display(AppPanel panel) {
         mainPanel.removeAll();
-        mainPanel.add(panel);
+        mainPanel.add((JPanel) panel);
+        panel.setMainWindow(this);
         
         this.repaint();
         this.validate();

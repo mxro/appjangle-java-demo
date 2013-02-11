@@ -4,6 +4,7 @@
  */
 package com.appjangle.demos.appjanglejavademo;
 
+import io.nextweb.Node;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
@@ -15,27 +16,28 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author mroh004
  */
-public class DisplayPostCountsPanel extends javax.swing.JPanel {
+public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPanel {
 
+    MainWindow mw;
+   
+    @Override
+    public void setMainWindow(MainWindow mw) {
+        this.mw = mw;
+    }
+    
     /**
      * Creates new form DisplayPostCountsPanel
      */
     public DisplayPostCountsPanel() {
         initComponents();
         
-        displayData(new HashMap<String, String>() {{
-            this.put("Caesar", "1");
-            this.put("Cleopetra", "5");
-            
-        }});
         
-        displayData(new HashMap<String, String>() {{
-            this.put("Caesar", "3");
-            this.put("Cleopetra", "5");
-            this.put("Sokrates", "2");
-        }});
     }
 
+    public void init(Node posts) {
+        
+    }
+    
     private void displayData(Map<String, String> data) {
        int currentRow =0;
         for (Entry<String, String> row : data.entrySet()) {
