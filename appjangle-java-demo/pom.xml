@@ -5,7 +5,7 @@
 
     <groupId>com.appjangle.demos</groupId>
     <artifactId>appjangle-java-demo</artifactId>
-    <version>0.1.1-SNAPSHOT</version>
+    <version>0.1.1</version>
     <packaging>jar</packaging>
 
     <name>appjangle-java-demo</name>
@@ -13,7 +13,42 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+       
+
+        <jarDest>C:\Users\mroh004\Dropbox\Public\onedb\mvn-releases</jarDest>
+
+        <jarSnap>C:\Users\mroh004\Dropbox\Public\onedb\mvn-snapshots</jarSnap>
+	
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>attached</goal>
+                        </goals>
+                        <phase>package</phase>
+                        <configuration>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <archive>
+                                <manifest>
+                                    <mainClass>com.appjangle.demos.appjanglejavademo.MainWindow</mainClass>
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
 
     <dependencies>
         <dependency>
@@ -30,4 +65,20 @@
             <url>http://dl.dropbox.com/u/957046/onedb/mvn-releases</url>
         </repository>
     </repositories>
+    
+    
+
+    <distributionManagement>
+        <repository>
+            <id>dropbox-releases</id>
+            <name>Releases to dropbox</name>
+            <url>file:///${jarDest}</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>dropbox-snapshots</id>
+            <name>Snapshots to dropbox</name>
+            <url>file://${jarSnap}</url>
+        </snapshotRepository>
+    </distributionManagement>
 </project>
