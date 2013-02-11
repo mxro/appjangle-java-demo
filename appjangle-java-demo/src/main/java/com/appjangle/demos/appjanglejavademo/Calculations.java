@@ -19,6 +19,7 @@ public class Calculations {
     Types t;
     Session session;
 
+    
     public Map<String, Integer> calculatePostsPerUser(Node posts) {
         Map<String, Integer> res = new HashMap<String, Integer>();
 

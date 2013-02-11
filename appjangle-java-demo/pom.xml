@@ -1,24 +1,33 @@
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.appjangle.demos</groupId>
-  <artifactId>appjangle-java-demo</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>com.appjangle.demos</groupId>
+    <artifactId>appjangle-java-demo</artifactId>
+    <version>0.1.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>appjangle-java-demo</name>
-  <url>http://appjangle.com/showcase</url>
+    <name>appjangle-java-demo</name>
+    <url>http://appjangle.com/showcase</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <dependencies>
-    <dependency>
-     <groupId>com.appjangle.java</groupId>
-     <artifactId>appjangle-java</artifactId>
-     <version>0.1.1</version>
-</dependency>
-  </dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.appjangle.java</groupId>
+            <artifactId>appjangle-java</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+    </dependencies>
+  
+  
+    <repositories>
+        <repository>
+            <id>onedb Releases</id>
+            <url>http://dl.dropbox.com/u/957046/onedb/mvn-releases</url>
+        </repository>
+    </repositories>
 </project>

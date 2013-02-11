@@ -4,10 +4,19 @@
  */
 package com.appjangle.demos.appjanglejavademo.panels;
 
+import com.appjangle.demos.appjanglejavademo.Calculations;
 import com.appjangle.demos.appjanglejavademo.MainWindow;
 import io.nextweb.Node;
+import io.nextweb.Session;
+import io.nextweb.common.Interval;
+import io.nextweb.common.Monitor;
+import io.nextweb.common.MonitorContext;
+import io.nextweb.fn.Calculation;
+import io.nextweb.fn.Closure;
+import io.nextweb.jre.Nextweb;
+import io.nextweb.operations.callbacks.Callback;
+import io.nextweb.operations.callbacks.NodeListener;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
 import javax.swing.table.AbstractTableModel;
@@ -20,56 +29,104 @@ import javax.swing.table.DefaultTableModel;
 public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPanel {
 
     MainWindow mw;
-   
+
     @Override
     public void setMainWindow(MainWindow mw) {
         this.mw = mw;
     }
-    
+
     /**
      * Creates new form DisplayPostCountsPanel
      */
     public DisplayPostCountsPanel() {
         initComponents();
-        
-        
+
     }
 
-    public void init(Node posts) {
-        
+    public void init(final Node posts) {
+        updateData(posts);
+
+        installMonitor(posts);
+
     }
-    
+
+    private void installMonitor(final Node posts) {
+        Session monitorSession = Nextweb.createSession();
+        monitorSession.node(posts).monitor().setInterval(Interval.FAST).setDepth(2).addListener(new NodeListener() {
+
+            public void onWhenNodeChanged(MonitorContext context) {
+                posts.reload(2).get(new Closure<Node>() {
+                    
+                    @Override
+                    public void apply(Node n) {
+                         updateData(posts);
+                    }
+                    
+                });
+               
+            }
+        }).get(new Closure<Monitor>() {
+
+            public void apply(Monitor m) {
+            }
+        });
+    }
+
+    private void updateData(final Node posts) {
+
+        new Thread() {
+
+            @Override
+            public void run() {
+                Calculations c = new Calculations(posts.getSession());
+                Map<String, Integer> results = c.calculatePostsPerUser(posts);
+                
+                displayData(toStringMap(results));
+            }
+        }.start();
+    }
+
     private void displayData(Map<String, String> data) {
-       int currentRow =0;
+        int currentRow = 0;
         for (Entry<String, String> row : data.entrySet()) {
 
-           renderRow((DefaultTableModel) postCountTable.getModel(), currentRow, row.getKey(), row.getValue());
-                    
-           currentRow++;
-       }
-        
-        
-    }
-    
-    private void renderRow(DefaultTableModel model, int row, String key, String value) {
-       
-        if (model.getRowCount() > row) {
-              String oldKey =  (String) model.getValueAt(row, 0);
-              String oldValue = (String) model.getValueAt(row, 1);
-             
-              if (oldKey.equals(key) && oldValue.equals(value)) {
-                  return;
-              }
-             
-              model.setValueAt(key, row, 0);
-              model.setValueAt(value, row, 1);
-              return;
+            renderRow((DefaultTableModel) postCountTable.getModel(), currentRow, row.getKey(), row.getValue());
+
+            currentRow++;
         }
-        
-        model.insertRow(row, new Object[] {key, value});
-        
+
+
     }
-    
+
+    private void renderRow(DefaultTableModel model, int row, String key, String value) {
+
+        if (model.getRowCount() > row) {
+            String oldKey = (String) model.getValueAt(row, 0);
+            String oldValue = (String) model.getValueAt(row, 1);
+
+            if (oldKey.equals(key) && oldValue.equals(value)) {
+                return;
+            }
+
+            model.setValueAt(key, row, 0);
+            model.setValueAt(value, row, 1);
+            return;
+        }
+
+        model.insertRow(row, new Object[]{key, value});
+
+    }
+
+    private Map<String, String> toStringMap(Map<String, Integer> source) {
+        Map<String, String> dest = new HashMap<String, String>();
+
+        for (Entry<String, Integer> e : source.entrySet()) {
+            dest.put(e.getKey(), e.getValue().toString());
+        }
+
+        return dest;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
