@@ -17,6 +17,7 @@ import io.nextweb.operations.callbacks.NodeListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -26,7 +27,8 @@ import javax.swing.table.DefaultTableModel;
 public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPanel {
 
     MainWindow mw;
-
+   
+    
     @Override
     public void setMainWindow(MainWindow mw) {
         this.mw = mw;
@@ -37,7 +39,6 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPan
      */
     public DisplayPostCountsPanel() {
         initComponents();
-
     }
 
     public void init(final Node posts) {
@@ -75,7 +76,7 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPan
         new Thread() {
 
             @Override
-            public void run() {
+            public synchronized void run() {
                 Calculations c = new Calculations(posts.getSession());
                 Map<String, Integer> results = c.calculatePostsPerUser(posts);
                 

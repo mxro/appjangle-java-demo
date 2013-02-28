@@ -8,7 +8,6 @@ import com.appjangle.demos.appjanglejavademo.panels.AppPanel;
 import com.appjangle.demos.appjanglejavademo.panels.ProvideWallUrlPanel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
