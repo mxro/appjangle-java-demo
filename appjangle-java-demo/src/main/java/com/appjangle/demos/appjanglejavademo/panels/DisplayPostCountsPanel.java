@@ -17,6 +17,8 @@ import io.nextweb.operations.callbacks.NodeListener;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,11 +29,12 @@ import javax.swing.table.DefaultTableModel;
 public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPanel {
 
     MainWindow mw;
-   
-    
+    ExecutorService updateThread;
+
     @Override
     public void setMainWindow(MainWindow mw) {
         this.mw = mw;
+        this.updateThread = Executors.newFixedThreadPool(1);
     }
 
     /**
@@ -55,14 +58,13 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPan
 
             public void onWhenNodeChanged(MonitorContext context) {
                 posts.reload(2).get(new Closure<Node>() {
-                    
+
                     @Override
                     public void apply(Node n) {
-                         updateData(posts);
+                        updateData(posts);
                     }
-                    
                 });
-               
+
             }
         }).get(new Closure<Monitor>() {
 
@@ -72,17 +74,17 @@ public class DisplayPostCountsPanel extends javax.swing.JPanel implements AppPan
     }
 
     private void updateData(final Node posts) {
+        this.updateThread.submit(
+                new Runnable() {
 
-        new Thread() {
+                    @Override
+                    public void run() {
+                        Calculations c = new Calculations(posts.getSession());
+                        Map<String, Integer> results = c.calculatePostsPerUser(posts);
 
-            @Override
-            public synchronized void run() {
-                Calculations c = new Calculations(posts.getSession());
-                Map<String, Integer> results = c.calculatePostsPerUser(posts);
-                
-                displayData(toStringMap(results));
-            }
-        }.start();
+                        displayData(toStringMap(results));
+                    }
+                });
     }
 
     private void displayData(Map<String, String> data) {
