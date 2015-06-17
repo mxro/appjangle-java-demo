@@ -4,14 +4,16 @@
  */
 package com.appjangle.demos.appjanglejavademo.panels;
 
-import com.appjangle.demos.appjanglejavademo.MainWindow;
 import io.nextweb.Link;
 import io.nextweb.Node;
 import io.nextweb.Session;
-import io.nextweb.fn.Closure;
-import io.nextweb.fn.ExceptionListener;
-import io.nextweb.fn.ExceptionResult;
 import io.nextweb.jre.Nextweb;
+import io.nextweb.promise.exceptions.ExceptionListener;
+import io.nextweb.promise.exceptions.ExceptionResult;
+
+import com.appjangle.demos.appjanglejavademo.MainWindow;
+
+import de.mxro.fn.Closure;
 
 /**
  *
