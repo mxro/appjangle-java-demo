@@ -1,25 +1,25 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.appjangle.demos</groupId>
-    <artifactId>appjangle-java-demo</artifactId>
-    <version>0.4.11-SNAPSHOT</version>
-    <packaging>jar</packaging>
+	<groupId>com.appjangle.demos</groupId>
+	<artifactId>appjangle-java-demo</artifactId>
+	<version>0.4.11-SNAPSHOT</version>
+	<packaging>jar</packaging>
 
-    <name>appjangle-java-demo</name>
-    <url>http://appjangle.com/showcase</url>
+	<name>appjangle-java-demo</name>
+	<url>http://appjangle.com/showcase</url>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-	
-    </properties>
 
-    <build>
-        <plugins>
-            <plugin>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.2</version>
 				<configuration>
@@ -27,51 +27,51 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-            
-            
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>attached</goal>
-                        </goals>
-                        <phase>package</phase>
-                        <configuration>
-                            <descriptorRefs>
-                                <descriptorRef>jar-with-dependencies</descriptorRef>
-                            </descriptorRefs>
-                            <archive>
-                                <manifest>
-                                    <mainClass>com.appjangle.demos.appjanglejavademo.MainWindow</mainClass>
-                                </manifest>
-                            </archive>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
 
-        </plugins>
-    </build>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.appjangle.java</groupId>
-            <artifactId>appjangle-java</artifactId>
-            <version>0.4.7</version>
-        </dependency>
-    </dependencies>
-  
-  
-   <repositories>
-  <repository>
-    <id>Appjangle Releases</id> 
-    <url>http://maven.appjangle.com/appjangle/releases</url>
-  </repository>
-</repositories>
-    
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>attached</goal>
+						</goals>
+						<phase>package</phase>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<archive>
+								<manifest>
+									<mainClass>com.appjangle.demos.appjanglejavademo.MainWindow</mainClass>
+								</manifest>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 
-   
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.appjangle.java</groupId>
+			<artifactId>appjangle-jre</artifactId>
+			<version>0.4.7</version>
+		</dependency>
+	</dependencies>
+
+
+	<repositories>
+		<repository>
+			<id>Appjangle Releases</id>
+			<url>http://maven.appjangle.com/appjangle/releases</url>
+		</repository>
+	</repositories>
+
+
+
 </project>
