@@ -4,23 +4,26 @@
  */
 package com.appjangle.demos.appjanglejavademo.panels;
 
-import com.appjangle.demos.appjanglejavademo.Calculations;
-import com.appjangle.demos.appjanglejavademo.MainWindow;
 import io.nextweb.Node;
 import io.nextweb.Session;
 import io.nextweb.common.Interval;
 import io.nextweb.common.Monitor;
 import io.nextweb.common.MonitorContext;
-import io.nextweb.fn.Closure;
 import io.nextweb.jre.Nextweb;
 import io.nextweb.operations.callbacks.NodeListener;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.atomic.AtomicBoolean;
+
 import javax.swing.table.DefaultTableModel;
+
+import com.appjangle.demos.appjanglejavademo.Calculations;
+import com.appjangle.demos.appjanglejavademo.MainWindow;
+
+import de.mxro.fn.Closure;
 
 /**
  *

@@ -13,11 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-       
 
-        <jarDest>C:\Users\mroh004\Dropbox\Public\onedb\mvn-releases</jarDest>
-
-        <jarSnap>C:\Users\mroh004\Dropbox\Public\onedb\mvn-snapshots</jarSnap>
 	
     </properties>
 
@@ -54,31 +50,18 @@
         <dependency>
             <groupId>com.appjangle.java</groupId>
             <artifactId>appjangle-java</artifactId>
-            <version>0.1.1</version>
+            <version>0.4.7</version>
         </dependency>
     </dependencies>
   
   
-    <repositories>
-        <repository>
-            <id>onedb Releases</id>
-            <url>http://dl.dropbox.com/u/957046/onedb/mvn-releases</url>
-        </repository>
-    </repositories>
-    
+   <repositories>
+  <repository>
+    <id>Appjangle Releases</id> 
+    <url>http://maven.appjangle.com/appjangle/releases</url>
+  </repository>
+</repositories>
     
 
-    <distributionManagement>
-        <repository>
-            <id>dropbox-releases</id>
-            <name>Releases to dropbox</name>
-            <url>file:///${jarDest}</url>
-        </repository>
-
-        <snapshotRepository>
-            <id>dropbox-snapshots</id>
-            <name>Snapshots to dropbox</name>
-            <url>file://${jarSnap}</url>
-        </snapshotRepository>
-    </distributionManagement>
+   
 </project>
