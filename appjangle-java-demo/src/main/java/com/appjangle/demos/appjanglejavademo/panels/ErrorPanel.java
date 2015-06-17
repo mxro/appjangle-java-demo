@@ -4,13 +4,15 @@
  */
 package com.appjangle.demos.appjanglejavademo.panels;
 
+import javax.swing.JPanel;
+
 import com.appjangle.demos.appjanglejavademo.MainWindow;
 
 /**
  *
  * @author mroh004
  */
-public class ErrorPanel extends javax.swing.JPanel implements AppPanel {
+public class ErrorPanel extends JPanel implements AppPanel {
 
     MainWindow mw;
    
